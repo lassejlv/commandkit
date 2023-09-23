@@ -1,17 +1,40 @@
 {
     "name": "commandkit",
-    "version": "0.0.0",
-    "private": true,
+    "description": "Beginner friendly command & event handler for Discord.js",
+    "version": "0.1.4",
     "license": "MIT",
-    "scripts": {
-        "dev": "turbo dev",
-        "lint": "turbo lint && prettier ./ --check --ignore-path=.prettierignore",
-        "build": "turbo lint && turbo build",
-        "build:package": "turbo lint --filter='commandkit' && turbo build --filter='commandkit'",
-        "deploy:package": "turbo lint --filter='commandkit' && turbo build --filter='commandkit' && turbo deploy --filter='commandkit'"
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./dist/index.js",
+            "import": "./dist/index.mjs",
+            "types": "./dist/index.d.ts"
+        }
     },
-    "devDependencies": {
-        "prettier": "^3.0.3",
-        "turbo": "^1.10.13"
+    "scripts": {
+        "lint": "tsc",
+        "dev": "tsup --watch",
+        "build": "tsup",
+        "deploy": "npm publish",
+        "test": "tsx watch tests/index.ts"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/underctrl-io/commandkit"
+    },
+    "homepage": "https://commandkit.js.org",
+    "keywords": [
+        "discord.js",
+        "command handler",
+        "event handler",
+        "command validations"
+    ],
+    "dependencies": {
+        "colors": "^1.4.0"
+    },
+    "peerDependencies": {
+        "discord.js": "^14"
     }
 }
